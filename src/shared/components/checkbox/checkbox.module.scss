@@ -1,0 +1,41 @@
+@import '@/shared/style-system/variables';
+
+.checkbox {
+    &__real {
+        width: 0;
+        height: 0;
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        left: -9999px;
+        top: -9999px;
+    }
+
+    &__fake-box {
+        display: inline-block;
+        width: 1rem;
+        height: 1rem;
+        border: 1px solid #9ABBCE;
+        border-radius: 2px;
+        position: relative;
+        cursor: pointer;
+
+        &--checked {
+            border-color: $primaryColor;
+        }
+    }
+    &__fake-check {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            width: 0.6rem;
+            height: 0.4rem;
+        }
+    }
+}

@@ -1,0 +1,12 @@
+@import '@/shared/style-system/variables';
+
+.show_more_btn {
+    width: 100%;
+    background-color: $primaryColor;
+    font-size: 0.6rem;
+    line-height: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    height: 2.5rem;
+    margin-top: 1rem;
+}

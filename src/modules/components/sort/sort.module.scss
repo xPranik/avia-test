@@ -1,0 +1,48 @@
+@import '@/shared/style-system/variables';
+
+.sort {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &__button {
+        height: 2.5rem;
+        width: 33.33%;
+        background-color: $white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75rem;
+        border: 1px solid $colorNeutral100;
+        font-size: 0.6rem;
+        font-weight: 500;
+        line-height: 1rem;
+        color: $textColorNeutral100;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all .2s;
+        z-index: 0;
+        
+        &:hover {
+            box-shadow: $elevation200;
+            z-index: 1;
+        }
+
+        &:not(:last-child) {
+            border-right: none;
+        }
+
+        &:first-child {
+            border-radius: 0.25rem 0 0 0.25rem;
+        }
+
+        &:last-child {
+            border-radius: 0 0.25rem 0.25rem 0;
+        }
+
+        &--active {
+            background-color: $primaryColor;
+            color: $white;
+            border: 1px solid $primaryColor;
+        }
+    }
+}
