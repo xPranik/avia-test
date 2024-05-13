@@ -1,4 +1,3 @@
-
 import { FilterType, TicketType } from "./types";
 import a4elogo from "@/assets/a4e_logo.png";
 
@@ -46,8 +45,8 @@ export const mockTickets: TicketType[] = [
       price: "2200",
       logo: a4elogo,
       forward: {
-        departure_time: new Date("2011-10-10T14:48:00"),
-        arrival_time: new Date("2011-10-11T14:18:00"),
+        departure_time: new Date("2011-10-10T20:20:00"),
+        arrival_time: new Date("2011-10-11T10:10:00"),
         departure_airport: "FLU",
         arrival_airport: "FLU",
       },
@@ -85,13 +84,13 @@ export const mockTickets: TicketType[] = [
       logo: a4elogo,
       forward: {
         departure_time: new Date("2011-10-10T14:48:00"),
-        arrival_time: new Date("2011-10-11T14:18:00"),
+        arrival_time: new Date("2011-10-10T18:30:00"),
         departure_airport: "FLU",
         arrival_airport: "FLU",
       },
       back: {
-        departure_time: new Date("2024-10-10T14:48:00"),
-        arrival_time: new Date("2024-10-11T12:18:00"),
+        departure_time: new Date("2024-10-10T14:30:00"),
+        arrival_time: new Date("2024-10-10T20:00:00"),
         departure_airport: "FLU",
         arrival_airport: "FLU",
       },
@@ -103,14 +102,14 @@ export const mockTickets: TicketType[] = [
       price: "700",
       logo: a4elogo,
       forward: {
-        departure_time: new Date("2011-10-10T14:48:00"),
-        arrival_time: new Date("2011-10-11T14:18:00"),
+        departure_time: new Date("2011-10-10T12:48:00"),
+        arrival_time: new Date("2011-10-10T20:18:00"),
         departure_airport: "FLU",
         arrival_airport: "FLU",
       },
       back: {
-        departure_time: new Date("2024-10-10T14:48:00"),
-        arrival_time: new Date("2024-10-11T12:18:00"),
+        departure_time: new Date("2024-10-10T18:40:00"),
+        arrival_time: new Date("2024-10-10T22:20:00"),
         departure_airport: "FLU",
         arrival_airport: "FLU",
       },
@@ -122,14 +121,14 @@ export const mockTickets: TicketType[] = [
       price: "22400",
       logo: a4elogo,
       forward: {
-        departure_time: new Date("2011-10-10T14:48:00"),
-        arrival_time: new Date("2011-10-11T14:18:00"),
+        departure_time: new Date("2011-10-10T15:15:00"),
+        arrival_time: new Date("2011-10-10T18:00:00"),
         departure_airport: "FLU",
         arrival_airport: "FLU",
       },
       back: {
-        departure_time: new Date("2024-10-10T14:48:00"),
-        arrival_time: new Date("2024-10-11T12:18:00"),
+        departure_time: new Date("2024-10-10T06:00:00"),
+        arrival_time: new Date("2024-10-10T12:00:00"),
         departure_airport: "FLU",
         arrival_airport: "FLU",
       },
@@ -141,14 +140,14 @@ export const mockTickets: TicketType[] = [
       price: "6400",
       logo: a4elogo,
       forward: {
-        departure_time: new Date("2011-10-10T14:48:00"),
-        arrival_time: new Date("2011-10-11T14:18:00"),
+        departure_time: new Date("2011-10-10T14:20:00"),
+        arrival_time: new Date("2011-10-10T16:40:00"),
         departure_airport: "FLU",
         arrival_airport: "FLU",
       },
       back: {
-        departure_time: new Date("2024-10-10T14:48:00"),
-        arrival_time: new Date("2024-10-11T12:18:00"),
+        departure_time: new Date("2024-10-10T20:50:00"),
+        arrival_time: new Date("2024-10-11T06:15:00"),
         departure_airport: "FLU",
         arrival_airport: "FLU",
       },
@@ -160,14 +159,14 @@ export const mockTickets: TicketType[] = [
       price: "3230",
       logo: a4elogo,
       forward: {
-        departure_time: new Date("2011-10-10T14:48:00"),
-        arrival_time: new Date("2011-10-11T14:18:00"),
+        departure_time: new Date("2011-10-11T13:15:00"),
+        arrival_time: new Date("2011-10-11T20:30:00"),
         departure_airport: "FLU",
         arrival_airport: "FLU",
       },
       back: {
-        departure_time: new Date("2024-10-10T14:48:00"),
-        arrival_time: new Date("2024-10-11T12:18:00"),
+        departure_time: new Date("2024-10-11T19:40:00"),
+        arrival_time: new Date("2024-10-12T06:20:00"),
         departure_airport: "FLU",
         arrival_airport: "FLU",
       },

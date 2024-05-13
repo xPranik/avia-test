@@ -6,21 +6,18 @@ const calculateTotalFlightDuration = (ticket: TicketType): number => {
 };
 
 const compareTickets = (ticketA: TicketType, ticketB: TicketType): number => {
-    const durationA = calculateTotalFlightDuration(ticketA);
-    const durationB = calculateTotalFlightDuration(ticketB);
-    if (durationA !== durationB) {
-        return durationA - durationB;
-    }
+    if (ticketA.forward.arrival_time < ticketB.forward.arrival_time) return -1;
+    if (ticketA.forward.arrival_time > ticketB.forward.arrival_time) return 1;
 
-    const transfersA = ticketA.transfers.length;
-    const transfersB = ticketB.transfers.length;
-    if (transfersA !== transfersB) {
-        return transfersA - transfersB;
-    }
+    if (ticketA.transfersKey < ticketB.transfersKey) return -1;
+    if (ticketA.transfersKey > ticketB.transfersKey) return 1;
 
-    const priceA = +ticketA.price;
-    const priceB = +ticketB.price;
-    return priceA - priceB;
+    const priceA = parseFloat(ticketA.price);
+    const priceB = parseFloat(ticketB.price);
+    if (priceA < priceB) return -1;
+    if (priceA > priceB) return 1;
+
+    return 0;
 };
 
 type OwnProps = {
