@@ -60,20 +60,23 @@
 
   .page {
     padding-top: 2.5rem;
+    
     &__content {
         display: flex;
         justify-content: space-between;
         padding: 2.5rem 2rem;
-        max-width: 840px;
+        max-width: 860px;
         margin: 0 auto;
     }
+
     &__sidebar {
         min-width: 11.6rem;
         max-width: 11.6rem;
     }
+
     &__body {
         width: 100%;
-        margin-left: 1.2rem;
+        margin-left: 2rem;
     }
   }
 
@@ -87,10 +90,12 @@
         flex-direction: column;
         padding: 1.5rem 1rem;
       }
+
       &__sidebar {
         max-width: 100%;
         width: 100%;
       }
+      
       &__body {
         margin: 1.5rem 0 0;
       }

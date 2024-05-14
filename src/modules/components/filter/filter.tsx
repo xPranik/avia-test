@@ -32,20 +32,53 @@ const filterOptions: { key: FilterType; label: string }[] = [
 const Filter = () => {
   const dispatch = useAppDispatch();
   const { tickets } = useAppSelector((state) => state.ticketsReducer);
-  const [allSelected, setSelectedAll] = React.useState<boolean>(true);
-  const [choosenFilter, setChoosenFilter] = React.useState<FilterType>(
-    FilterType.All
-  );
+  const [selectedFilters, setSelectedFilters] = React.useState<FilterType[]>([
+    FilterType.All,
+  ]);
+  const allSelected = selectedFilters.includes(FilterType.All);
 
   const handleCheckboxChange = (filterType: FilterType) => {
-    setSelectedAll(filterType === FilterType.All);
-    setChoosenFilter(filterType);
+    if (filterType === FilterType.All) {
+      setSelectedFilters([
+        FilterType.All,
+        FilterType.Direct,
+        FilterType.OneStop,
+        FilterType.TwoStops,
+        FilterType.ThreeStops,
+      ]);
+    } else {
+      setSelectedFilters((prevFilters) => {
+        if (prevFilters.includes(filterType)) {
+          return prevFilters.filter(
+            (f) => f !== filterType && f !== FilterType.All
+          );
+        } else {
+          if (prevFilters.includes(FilterType.All)) {
+            return [filterType];
+          } else {
+            return [...prevFilters, filterType];
+          }
+        }
+      });
+    }
   };
 
   React.useEffect(() => {
-    dispatch(setFilters(choosenFilter));
+    if (selectedFilters.length === 4) {
+      setSelectedFilters([
+        FilterType.All,
+        FilterType.Direct,
+        FilterType.OneStop,
+        FilterType.TwoStops,
+        FilterType.ThreeStops,
+      ]);
+    }
+
+    dispatch(setFilters(selectedFilters));
     dispatch(filterTickets(tickets));
-  }, [choosenFilter, allSelected]);
+  }, [selectedFilters]);
+
+  console.log(selectedFilters);
 
   return (
     <div className={`block ${styles.filter}`}>
@@ -58,7 +91,7 @@ const Filter = () => {
             onClick={() => handleCheckboxChange(option.key)}
           >
             <Checkbox
-              isChecked={allSelected || choosenFilter === option.key}
+              isChecked={allSelected || selectedFilters.includes(option.key)}
               name={option.key.toString()}
             />
             <span className={styles["filter__list__item-label"]}>

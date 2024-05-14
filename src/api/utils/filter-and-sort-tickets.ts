@@ -22,15 +22,17 @@ const compareTickets = (ticketA: TicketType, ticketB: TicketType): number => {
 
 type OwnProps = {
     sortType: SortType;
-    filterType: FilterType;
+    filterTypes: FilterType[];
     tickets: TicketType[];
 }
 
-export const filterAndSortTickets = ({sortType, filterType, tickets}: OwnProps) => {
+export const filterAndSortTickets = ({sortType, filterTypes, tickets}: OwnProps) => {
     const filteredTickets: TicketType[] = [];
 
-    if (filterType !== 0) {
-        filteredTickets.push(...tickets.filter(ticket => filterType === ticket.transfersKey));
+    if (filterTypes.length > 0 && !filterTypes.includes(FilterType.All)) {
+        filteredTickets.push(...tickets.filter((ticket) =>
+            filterTypes.includes(ticket.transfersKey)
+        ));
     } else {
         filteredTickets.push(...tickets);
     }

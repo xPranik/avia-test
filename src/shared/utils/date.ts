@@ -12,7 +12,7 @@ const getHumanizedTime = (date: number) => {
     const remainingMilliseconds = date % (1000 * 60 * 60);
     const totalMinutes = Math.floor(remainingMilliseconds / (1000 * 60));
   
-    const durationString = `${totalHours}г ${totalMinutes}х`;
+    const durationString = `${totalHours}г ${totalMinutes}хв`;
   
     return durationString;
  };

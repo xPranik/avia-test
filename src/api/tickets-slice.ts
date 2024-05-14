@@ -10,7 +10,7 @@ interface TicketState {
   filteredTickets: TicketType[],
   quantity: number;
   sortType: SortType,
-  filters: FilterType,
+  filters: FilterType[],
 }
 
 const initialState: TicketState = {
@@ -19,7 +19,7 @@ const initialState: TicketState = {
   filteredTickets: mockTickets,
   quantity: 10,
   sortType: SortType.PRICE,
-  filters: FilterType.All,
+  filters: [FilterType.All],
 };
 
 const ticketsSlice = createSlice({
@@ -29,11 +29,11 @@ const ticketsSlice = createSlice({
     setSortType(state, action: PayloadAction<SortType>) {
       state.sortType = action.payload;
     },
-    setFilters(state, action: PayloadAction<FilterType>) {
+    setFilters(state, action: PayloadAction<FilterType[]>) {
       state.filters = action.payload;
     },
     filterTickets(state, action: PayloadAction<TicketType[]>) {
-      state.filteredTickets = filterAndSortTickets({sortType: state.sortType, filterType: state.filters, tickets: action.payload});
+      state.filteredTickets = filterAndSortTickets({sortType: state.sortType, filterTypes: state.filters, tickets: action.payload});
     }
   },
 })

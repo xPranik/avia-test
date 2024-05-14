@@ -1,6 +1,7 @@
 import * as React from "react";
 import useHumanizeTicketData from "@/shared/utils/hooks/use-humanize-ticket-data";
 import { TicketType } from "@/api/types";
+import { TicketDataRow } from "./ticket-data-row";
 const styles = require("./ticket.module.scss");
 
 type OwnProps = {
@@ -9,9 +10,9 @@ type OwnProps = {
 
 const Ticket: React.FC<OwnProps> = ({ ticketData }) => {
   const ticketFormattedDates = useHumanizeTicketData(ticketData);
-  const transfersLength = ticketData.transfers?.length;
+  const transfersLength = ticketData.transfers.length;
   const transfersLabel =
-    transfersLength && transfersLength > 1 ? "Пересадки" : "Пересадка";
+    transfersLength > 1 ? "Пересадки" : "Пересадка" || "Без пересадок";
 
   return (
     <a href="#" className={`block ${styles.ticket}`}>
@@ -25,72 +26,28 @@ const Ticket: React.FC<OwnProps> = ({ ticketData }) => {
         </div>
       </div>
       <div className={styles.ticket__body}>
-        <div className={styles.ticket__body__row}>
-          <div className={styles.ticket__body__data}>
-            <p className={styles.ticket__body__label}>
-              {`${ticketData.forward.departure_airport} - ${ticketData.forward.arrival_airport}`}
-            </p>
-            <p className={styles.ticket__body__value}>
-              {ticketFormattedDates.forwardFlightDeparture} -{" "}
-              {ticketFormattedDates.forwardFlightArrival}
-            </p>
-          </div>
-          <div className={styles.ticket__body__data}>
-            <p className={styles.ticket__body__label}>В дорозі</p>
-            <p className={styles.ticket__body__value}>
-              {ticketFormattedDates.forwardFlightDuration}
-            </p>
-          </div>
-          <div className={styles.ticket__body__data}>
-            {transfersLength ? (
-              <>
-                <p
-                  className={styles.ticket__body__label}
-                >{`${transfersLength} ${transfersLabel}`}</p>
-                <p className={styles.ticket__body__value}>
-                  {ticketData.transfers.map((transfer, index) => (
-                    <span key={index}>{`${transfer}${
-                      index + 1 !== transfersLength ? ", " : ""
-                    }`}</span>
-                  ))}
-                </p>
-              </>
-            ) : null}
-          </div>
-        </div>
-        <div className={styles.ticket__body__row}>
-          <div className={styles.ticket__body__data}>
-            <p className={styles.ticket__body__label}>
-              {`${ticketData.back.departure_airport} - ${ticketData.back.arrival_airport}`}
-            </p>
-            <p className={styles.ticket__body__value}>
-              {ticketFormattedDates.backFlightDeparture} -{" "}
-              {ticketFormattedDates.backFlightArrival}
-            </p>
-          </div>
-          <div className={styles.ticket__body__data}>
-            <p className={styles.ticket__body__label}>В дорозі</p>
-            <p className={styles.ticket__body__value}>
-              {ticketFormattedDates.backFlightDuration}
-            </p>
-          </div>
-          <div className={styles.ticket__body__data}>
-            {transfersLength ? (
-              <>
-                <p
-                  className={styles.ticket__body__label}
-                >{`${transfersLength} ${transfersLabel}`}</p>
-                <p className={styles.ticket__body__value}>
-                  {ticketData.transfers.map((transfer, index) => (
-                    <span key={index}>{`${transfer}${
-                      index + 1 !== transfersLength ? ", " : ""
-                    }`}</span>
-                  ))}
-                </p>
-              </>
-            ) : null}
-          </div>
-        </div>
+        <TicketDataRow
+          airports={`${ticketData.forward.departure_airport} - ${ticketData.forward.arrival_airport}`}
+          time={`${ticketFormattedDates.forwardFlightDeparture} - ${ticketFormattedDates.forwardFlightArrival}`}
+          duration={ticketFormattedDates.forwardFlightDuration}
+          transfers={ticketData.transfers}
+          transfersLabel={
+            transfersLength
+              ? `${transfersLength} ${transfersLabel}`
+              : "Без пересадок"
+          }
+        />
+        <TicketDataRow
+          airports={`${ticketData.back.departure_airport} - ${ticketData.back.arrival_airport}`}
+          time={`${ticketFormattedDates.backFlightDeparture} - ${ticketFormattedDates.backFlightArrival}`}
+          duration={ticketFormattedDates.backFlightDuration}
+          transfers={ticketData.transfers}
+          transfersLabel={
+            transfersLength
+              ? `${transfersLength} ${transfersLabel}`
+              : "Без пересадок"
+          }
+        />
       </div>
     </a>
   );
