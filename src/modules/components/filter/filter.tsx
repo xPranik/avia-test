@@ -78,8 +78,6 @@ const Filter = () => {
     dispatch(filterTickets(tickets));
   }, [selectedFilters]);
 
-  console.log(selectedFilters);
-
   return (
     <div className={`block ${styles.filter}`}>
       <p className={styles.filter__title}>Кількість пересадок</p>
